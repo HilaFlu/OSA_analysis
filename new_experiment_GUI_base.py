@@ -76,7 +76,7 @@ class CreateExperimentGUI:
         # print("New Experiment:", experiment_name)
         # print("Researchers:", researchers) 
         self.create_exp_window.destroy()
-        load_file_window = LoadFileWindow(experiment_data)  # Open the load file window
+        #load_file_window = LoadFileWindow(experiment_data)  # Open the load file window
         
 
 

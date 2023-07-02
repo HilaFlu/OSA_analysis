@@ -6,12 +6,12 @@ import tkinter as tk
 from tkinter import messagebox
 from experiment_analysis import *
 from animal_analysis import *
-from gui_data_frame import *
+from Experiment_Data_Holder import *
 
 
 
 class Show_Analysis:
-    def __init__(self, experiment: GUI_DataFrame):
+    def __init__(self, experiment: ExperimentData):
 
         # in order to save the graphs from the gui for usement after closing the gui
         self.graphs = {}
@@ -123,6 +123,6 @@ class Show_Analysis:
         self.root.mainloop()
 
 # Create an instance of the GUI and run it
-data_gui = GUI_DataFrame("insert needed values")
-gui = Show_Analysis()
+data = ExperimentData()
+gui = Show_Analysis(data)
 gui.run()
