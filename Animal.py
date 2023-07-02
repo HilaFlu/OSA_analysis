@@ -7,8 +7,7 @@
 from data_extraction import process_text_data
 import pandas as pd
 from pathlib import Path
-from datetime import datetime
-from datetime import timedelta
+import datetime
 import os
 
 
@@ -98,7 +97,7 @@ class Animal:
         # update session weight and sex
         weight = 0
         for weight_date in self.weight.keys():
-            if weight_date <= session_df.loc[1, "Start Date"] < (weight_date + timedelta(days=7)):
+            if weight_date <= session_df.loc[1, "Start Date"] < (weight_date + datetime.timedelta(days=7)):
                 weight = self.weight[weight_date]
         session_df["weight"] = weight
         session_df["sex"] = self.sex
@@ -108,7 +107,7 @@ class Animal:
         self.animal_data = pd.concat([self.animal_data, session_df.loc[[self.animal_box]]], ignore_index=True)
 
     def add_weight(self,
-                   weight_date: datetime.date,
+                   weight_date: datetime.datetime.date,
                    weight_value: float) -> None:
         """
         Adds weight data to the animal's weight dictionary.
@@ -125,7 +124,7 @@ class Animal:
         ValueError:
             If 'weight_date' is not a date object or 'weight_value' is not a float.
         """
-        if not isinstance(weight_date, datetime.date):
+        if not isinstance(weight_date, datetime.datetime.date):
             raise ValueError("'weight_date' must be a date object.")
 
         if not isinstance(weight_value, float):
