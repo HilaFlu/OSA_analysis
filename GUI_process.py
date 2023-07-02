@@ -28,7 +28,8 @@ def process():
     experiment = LoadFileWindow(experiment)  # Open the load file window
 
     # step 5 - analyze the data using different graphs and functions with the GUI
-
+    gui = Show_Analysis(experiment=experiment)
+    gui.run()
 
 if __name__ == '__main__':
     process()

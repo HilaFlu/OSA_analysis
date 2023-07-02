@@ -122,7 +122,7 @@ class Show_Analysis:
     def run(self):
         self.root.mainloop()
 
-# Create an instance of the GUI and run it
-data = ExperimentData()
-gui = Show_Analysis(data)
-gui.run()
+# # Create an instance of the GUI and run it
+# data = ExperimentData()
+# gui = Show_Analysis(data)
+# gui.run()

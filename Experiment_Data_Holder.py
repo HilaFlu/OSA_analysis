@@ -2,11 +2,8 @@
 
 from Animal import *
 from Experiment import *
-#from animal_analysis import *
-#from experiment_analysis import *
-from load_data_file_base import *
-from new_experiment_GUI_base import *
-from group_GUI import *
+from animal_analysis import *
+from experiment_analysis import *
 
 # using this file, we create a new data frame that the GUI can interface with
 # The first step is initializing the data base, creating a new experiment (by the user in the GUI)
