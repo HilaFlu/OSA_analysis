@@ -1,13 +1,14 @@
 import tkinter as tk
 from tkinter import filedialog
 from Experiment_Data_Holder import ExperimentData
+from Experiment import *
 
 class LoadFileWindow:
-    def __init__(self, experiment_data):
+    def __init__(self, experiment: ExperimentData):
         self.file_path = ""
         self.file_contents = ""
         self.session_number = ""
-        self.experiment_data = experiment_data
+        self.experiment_data = []
         self.load_file_window = tk.Tk()
         self.load_file_window.title("Load File")
         self.load_file_window.geometry("450x450")
@@ -26,7 +27,6 @@ class LoadFileWindow:
 
         self.session_number_entry = tk.Entry(self.load_file_window)
         self.session_number_entry.pack()
-
         
         self.file_contents_label = tk.Label(self.load_file_window, text="File Contents:")
         self.file_contents_label.pack(pady=10)
@@ -42,7 +42,7 @@ class LoadFileWindow:
 
         self.load_file_window.mainloop()
 
-    def upload_file(self):
+    def upload_file(self, experiment: ExperimentData):
         file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.rtf")])
         if file_path:
             self.file_path = file_path
@@ -54,13 +54,21 @@ class LoadFileWindow:
                 self.file_contents_text.delete("1.0", tk.END)
                 self.file_contents_text.insert(tk.END, self.file_contents)
                 self.file_contents_text.config(state=tk.DISABLED)
-        self.experiment_data.path = file_path
+        
+        self.experiment_data = self.file_contents_text
+        experiment.add_session(file_path=self.file_path_text, session_number=self.session_number)
+        return experiment
+    
     def load_file(self):
         self.session_number = self.session_number_entry.get()
-        experiment_data = self.experiment_data
-        experiment_data.load_session_number(self.session_number)
-        experiment_data.load_sess_path(self.experiment_data.path)
+        self.experiment_data = self.upload_file()
         print("file successfully Loaded")
+
+    def get_session_number(self):
+        return self.session_number
+    
+    def get_session_data(self):
+        return self.experiment_data
     
 
 # if __name__ == '__main__':

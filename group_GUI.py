@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 
+GROUPS = []
+
 class AnimalGroupWindow:
     """This GUI's purpose is to allow the User to create groups of animals,
     and input the details of each animal, in addition to adding animals as needed.
@@ -123,6 +125,8 @@ class AnimalGroupWindow:
 
         self.groups.append(group)
 
+    def get_groups(self):
+        return self.groups
 
 if __name__ == '__main__':
     animal_group_window = AnimalGroupWindow()
