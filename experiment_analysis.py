@@ -134,7 +134,7 @@ def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: st
     # Close the figure to free up memory
     plt.close()
 
-#------------------------------------------------------------------------------------------------#
+#-------------------------------------------------------------------------------------------------#
 
 # This funct plots the right and left lever presses per a selected group(s)
 # to learn how to use this func please refer to the test file
