@@ -204,6 +204,4 @@ class Experiment:
         if not os.path.isdir(save_path):
             raise FileNotFoundError("Folder not found.")
 
-        save_path = '/Users/flomin/Desktop/Personal/python_class/final_project/tamar_update'
-
         self.experiment_data.to_csv(os.path.join(save_path, "experiment_data.csv"))
