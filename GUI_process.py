@@ -10,8 +10,6 @@ from data_extraction import *
 from new_experiment_GUI_base import *
 
 
-
-
 def process():    
     # step 1 - create a workspace 
     experiment = ExperimentData()
