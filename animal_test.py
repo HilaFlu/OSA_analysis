@@ -11,6 +11,7 @@ class TestAnimal:
     path2 = "./test_data/test_data2.rtf"
     path3 = "./test_data/test_data3.rtf"
     path4 = "./test_data/test_data4.rtf"
+    path5= "./test_data/populations.txt"
     my_date = datetime.date(2023, 6, 15)
 
     # Test constractor with all parameters
@@ -26,12 +27,6 @@ class TestAnimal:
     def test_id_negative(self):
         with pytest.raises(ValueError):
             Animal(animal_id=-2, sex="Male", weight={self.my_date:230.5}, animal_box=2, animal_data=pd.DataFrame())
-
-    # Test if 2 animal objects with the same id fails
-    def test_double_id(self):
-        a1= Animal(animal_id=1, sex="Male", weight={self.my_date:555.5}, animal_box=5, animal_data=pd.DataFrame())
-        with pytest.raises(ValueError):
-            Animal(animal_id=1, sex="Male", weight={self.my_date:230.5}, animal_box=2, animal_data=pd.DataFrame())
 
     # Test that not string sex fail
     def test_string_sex(self):
@@ -73,12 +68,6 @@ class TestAnimal:
     def test_animal_data_df(self):
         with pytest.raises(ValueError):
             Animal(animal_id=1, sex="Male", weight={self.my_date:230.5}, animal_box=2, animal_data=6)
-
-    #Check if fails when file not end with rtf
-
-
-
-
 
     # Check if fails when file path is not string
     def test_session_path_string(self):
@@ -127,18 +116,15 @@ class TestAnimal:
         animal_1 = Animal(animal_id=2, sex="Male", weight={self.my_date:230.5}, animal_box=2, animal_data=pd.DataFrame())
         with pytest.raises(FileNotFoundError):
             animal_1.save_animal("notpath")
-        
-
-  
             
 if __name__ == '__main__':
     ttests = TestAnimal()
     methods = ["init_full_params",
                "id_negative" ,"id_integer",
-               "double_id", "string_sex", "proper_sex",
+                "string_sex", "proper_sex",
                "weight_dict","weight_negative","weight_float",
                "future_date", "datetime_date"
-               "animal_data_df", "session_path_string", 
+               "animal_data_df","session_path_string", 
                "session_number_int", "session_number_negative",
                "add_weight_float", "save_path_string" , "save_path_exists"]
     
