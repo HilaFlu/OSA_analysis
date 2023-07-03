@@ -31,11 +31,12 @@ def plot_and_save_total_alcohol_intake(animal: Animal, path: str) -> None:
     -------
     None
     """
-    weight_dict=animal.weight
 
     # Validate animal
     if not isinstance(animal, Animal):
         raise ValueError("Error: animal should be an instance of Animal class.")
+    
+    weight_dict=animal.weight
 
     # Validate weight_dict
     if not isinstance(weight_dict, dict):
@@ -93,11 +94,12 @@ def plot_and_save_alcohol_intake_per_session(animal: Animal, session_number: int
     -------
     None
     """    
-    weight_dict=animal.weight
 
     # Validate animal
     if not isinstance(animal, Animal):
         raise ValueError("Error: animal should be an instance of Animal class.")
+
+    weight_dict=animal.weight
 
     # Validate weight_dict
     if not isinstance(weight_dict, dict):

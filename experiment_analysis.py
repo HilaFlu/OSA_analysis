@@ -39,10 +39,14 @@ def plot_avg_intake(experiment: Experiment, groups: list, sex: str = None, save_
     """
     df=experiment.experiment_data
 
-    # Validate df
-    if not isinstance(df, pd.DataFrame):
-        raise ValueError("Error: df should be a pandas DataFrame.")
-        
+    # # Validate df
+    # if not isinstance(df, pd.DataFrame):
+    #     raise ValueError("Error: df should be a pandas DataFrame.")
+    
+    # Validate experiment
+    if not isinstance(experiment, Experiment):
+        raise ValueError("Error: experiment should be an instance of Experiment class.")
+
     # Validate groups
     if not isinstance(groups, list):
         raise ValueError("Error: groups should be a list.")
