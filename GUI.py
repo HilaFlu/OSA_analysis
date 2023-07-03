@@ -10,8 +10,11 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from Analysis_GUI import AnalysisGUI
+from Experiment import *
+
 class ExperimentDetailsGUI:
     def __init__(self):
+        self.exp = Experiment(groups={}, name="", experimenters=['base'])
         self.researchers = []
         self.files = {}
         self.groups = []
@@ -95,6 +98,7 @@ class ExperimentDetailsGUI:
             self.researchers.append(researcher_name)
             self.researcher_name_entry.delete(0, tk.END)
             self.update_researchers_text()
+            self.exp.add_experimenter(researcher_name)
 
     def update_researchers_text(self):
         self.researchers_text.config(state='normal')
@@ -123,11 +127,13 @@ class ExperimentDetailsGUI:
             messagebox.showinfo("File Loaded", "File loaded successfully.")
         else:
             messagebox.showerror("Error", "Please provide a valid file path and session number.")
-    
+        self.exp.add_session(file_path, session_number)
+
     def save_exp_data(self):
         self.exp_name = self.experiment_name_entry.get()
         print("Experiment -",self.exp_name, "has been initiallized by", str(self.researchers))  
         print("the dict for the files is " , self.files  )
+        self.exp.name = self.exp_name
         """ this saves the name of the of the Experiment and the olist of researchers"""
         Creat_groups_gui = AnimalGroupWindow()  
     
@@ -211,5 +217,8 @@ class ExperimentDetailsGUI:
 
     #     self.groups.append(group)
 
+if __name__ == '__main__':
+    gui = ExperimentDetailsGUI()
+    exp = gui.exp
+    
 
-gui = ExperimentDetailsGUI()
