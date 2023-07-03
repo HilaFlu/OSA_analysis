@@ -15,7 +15,7 @@ import os
 
 # F1: This function plots the alcohol intake for a specific animal in each session
 # def plot_and_save_total_alcohol_intake(animal, weight_dict, path):
-def plot_and_save_total_alcohol_intake(animal: Animal, weight_dict: dict, path: str) -> None:
+def plot_and_save_total_alcohol_intake(animal: Animal, path: str) -> None:
 
     """
     Plots the total alcohol intake for a specific animal in each session and saves the plot.
@@ -24,8 +24,6 @@ def plot_and_save_total_alcohol_intake(animal: Animal, weight_dict: dict, path: 
     ----------
     animal : Animal
         The animal object.
-    weight_dict : Dict
-        A dictionary containing the weights of the animal.
     path : str
         The path where the plot will be saved.
 
@@ -33,6 +31,8 @@ def plot_and_save_total_alcohol_intake(animal: Animal, weight_dict: dict, path: 
     -------
     None
     """
+    weight_dict=animal.weight
+
     # Validate animal
     if not isinstance(animal, Animal):
         raise ValueError("Error: animal should be an instance of Animal class.")
@@ -76,7 +76,7 @@ def plot_and_save_total_alcohol_intake(animal: Animal, weight_dict: dict, path: 
 #------------------------------------------------------------------------------------------------#
 
 #F2: This function plots the alcohol intake over time for a specific animal in a given session
-def plot_and_save_alcohol_intake_per_session(animal: Animal, weight_dict: dict, session_number: int, path: str) -> None:
+def plot_and_save_alcohol_intake_per_session(animal: Animal, session_number: int, path: str) -> None:
     """
     Plots the total alcohol intake for a specific animal in each session and saves the plot.
 
@@ -84,8 +84,6 @@ def plot_and_save_alcohol_intake_per_session(animal: Animal, weight_dict: dict, 
     ----------
     animal : Animal
         The animal object.
-    weight_dict : Dict
-        A dictionary containing the weights of the animal.
     session_number : int
         The session number to plot.
     path : str
@@ -95,6 +93,8 @@ def plot_and_save_alcohol_intake_per_session(animal: Animal, weight_dict: dict, 
     -------
     None
     """    
+    weight_dict=animal.weight
+
     # Validate animal
     if not isinstance(animal, Animal):
         raise ValueError("Error: animal should be an instance of Animal class.")

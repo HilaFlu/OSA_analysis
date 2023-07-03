@@ -18,14 +18,14 @@ import matplotlib.ticker as ticker
 # an example of how to call this func: 'plot_avg_intake(df, groups=[1, 2], sex='Female')'
 
 #F5
-def plot_avg_intake(df: pd.DataFrame, groups: list, sex: str = None, save_path: str = '.') -> None:
+def plot_avg_intake(experiment: Experiment, groups: list, sex: str = None, save_path: str = '.') -> None:
     """
     Plots the average alcohol intake for each animal in each session, for the specified groups, and saves the plot.
 
     Parameters
     ----------
-    df : pd.DataFrame
-        The dataframe containing the animal data.
+    experiment : Experiment
+        The Experiment object.
     groups : List[Any]
         The groups to include in the plot.
     sex : str, optional
@@ -37,6 +37,8 @@ def plot_avg_intake(df: pd.DataFrame, groups: list, sex: str = None, save_path: 
     -------
     None
     """
+    df=experiment.experiment_data
+
     # Validate df
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Error: df should be a pandas DataFrame.")
@@ -49,8 +51,11 @@ def plot_avg_intake(df: pd.DataFrame, groups: list, sex: str = None, save_path: 
         raise ValueError("Error: all elements in groups should be integers.")
 
     # Validate sex
-    if sex is not None and not isinstance(sex, str):
-        raise ValueError("Error: sex should be a string.")
+    if sex is not None:
+        if not isinstance(sex, str):
+            raise ValueError("Error: sex should be a string.")
+        if sex not in ["Male", "Female"]:
+            raise ValueError("Error: sex should be either 'Male' or 'Female'.")
 
     # Validate save_path
     if not isinstance(save_path, str):
@@ -103,14 +108,14 @@ def plot_avg_intake(df: pd.DataFrame, groups: list, sex: str = None, save_path: 
 # the supported metrics are: rewards, head, left_lever, right_lever
 
 #F6
-def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: str = None, save_path: str = '.') -> None:
+def plot_metric_per_session(experiment: Experiment, groups: list, metric: str, sex: str = None, save_path: str = '.') -> None:
     """
     Plots the average value of a specified metric for each animal in each session, for the specified groups, and saves the plot.
 
     Parameters
     ----------
-    df : pd.DataFrame
-        The dataframe containing the animal data.
+    experiment : Experiment
+        The Experiment object.
     groups : List[Any]
         The groups to include in the plot.
     metric : str
@@ -124,6 +129,7 @@ def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: st
     -------
     None
     """
+    df=experiment.experiment_data
     # Validate df
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Error: df should be a pandas DataFrame.")
@@ -138,6 +144,8 @@ def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: st
     # Validate metric
     if not isinstance(metric, str):
         raise ValueError("Error: metric should be a string.")
+    if metric not in ["head", "rewards", "left_lever", "right_lever"]:
+        raise ValueError("Error: metric should be 'head', 'rewards','left_lever' or 'right_lever'")
 
     # Validate sex
     if sex is not None and not isinstance(sex, str):
@@ -189,14 +197,14 @@ def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: st
 # This funct plots the right and left lever presses per a selected group(s)
 # to learn how to use this func please refer to the test file
 #F7
-def plot_group_presses(df: pd.DataFrame, groups: list = None, save_path: str = '.') -> None:
+def plot_group_presses(experiment: Experiment, groups: list = None, save_path: str = '.') -> None:
     """
     Plots the average number of left and right lever presses for each group, and saves the plot.
 
     Parameters
     ----------
-    df : pd.DataFrame
-        The dataframe containing the animal data.
+    experiment : Experiment
+        The Experiment object.
     groups : List[Any], optional
         The groups to include in the plot. If None, includes all groups.
     save_path : str, optional
@@ -206,7 +214,7 @@ def plot_group_presses(df: pd.DataFrame, groups: list = None, save_path: str = '
     -------
     None
     """
-
+    df=experiment.experiment_data
     # Validate df
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Error: df should be a pandas DataFrame.")
