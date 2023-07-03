@@ -10,7 +10,24 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from Analysis_GUI import AnalysisGUI
+
+
 class ExperimentDetailsGUI:
+    """This is a starting GUI class.
+    It initiallizes an instance of a GUI windows the accepts input for :
+    Experiment name : str
+    Researchers : list 
+    
+    |||
+    
+    It can upload an rtf. file and asks the user to input a session number.
+    upon pressing the "Load file " button the path of the session 
+    and file path are saved as key and value respectively for future use. 
+    
+    "Save file data" button will save the name of researchers and the name of the experiment 
+    and print them in the terminal ", in addition , it opens a new GUI window where we can create
+    our groups of animals
+    """
     def __init__(self):
         self.researchers = []
         self.files = {}
@@ -90,6 +107,8 @@ class ExperimentDetailsGUI:
         self.root.mainloop()
 
     def add_researcher(self):
+        """ command for add reasercher button - append the researchers name
+        to the list"""
         researcher_name = self.researcher_name_entry.get()
         if researcher_name:
             self.researchers.append(researcher_name)
@@ -104,6 +123,8 @@ class ExperimentDetailsGUI:
         self.researchers_text.config(state='disabled')
 
     def upload_file(self):
+        """ command for "Upload rtf file" , asks the user to choose an .rtf file 
+        off of his computer and and displays the path"""
         file_path = filedialog.askopenfilename(filetypes=[("RTF Files", "*.rtf")])
         if file_path:
             self.file_path_entry.config(state='normal')
@@ -112,6 +133,7 @@ class ExperimentDetailsGUI:
             self.file_path_entry.config(state='readonly')
 
     def load_file(self):
+        """command for the load data button"""
         file_path = self.file_path_entry.get()
         session_number = self.session_number_entry.get()
         if file_path and session_number.isdigit():
@@ -125,6 +147,7 @@ class ExperimentDetailsGUI:
             messagebox.showerror("Error", "Please provide a valid file path and session number.")
     
     def save_exp_data(self):
+        """saves The exp name and opens the Animal group GUI for group creation"""
         self.exp_name = self.experiment_name_entry.get()
         print("Experiment -",self.exp_name, "has been initiallized by", str(self.researchers))  
         print("the dict for the files is " , self.files  )
