@@ -51,7 +51,7 @@ class Animal:
         if animal_box is not None and not isinstance(animal_box, int):
             raise ValueError("'animal_box' must be an integer.")
 
-        if animal_data is not None and not isinstance(animal_data, pd.DataFrame):
+        if not isinstance(animal_data, pd.DataFrame):
             raise ValueError("'animal_data' must be a DataFrame.")
 
         for date_weight in weight.keys():
@@ -69,6 +69,18 @@ class Animal:
         self.weight = weight
         self.animal_box = animal_box
         self.animal_data = animal_data
+
+    def __repr__(self) -> str:
+        """
+        Returns representation of animal
+
+        Returns
+        -------
+        print_animal: String
+            representation of the animal's id
+        """
+        print_animal = "animal id: " + str(self.animal_id)
+        return print_animal
 
     def add_session_to_animal(self,
                               file_path: str,

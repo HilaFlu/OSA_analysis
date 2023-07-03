@@ -51,6 +51,18 @@ class Experiment:
         self.experimenters = experimenters
         self.experiment_data = pd.DataFrame()
 
+    def __repr__(self) -> str:
+        """
+        Returns representation of experiment
+
+        Returns
+        -------
+        print_animal: String
+            representation of the experiment's name
+        """
+        print_exp = "experiment : " + str(self.name)
+        return print_exp
+
     def add_animal(self,
                    animals: list) -> None:
         """
