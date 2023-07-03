@@ -37,6 +37,35 @@ def plot_avg_intake(df: pd.DataFrame, groups: list, sex: str = None, save_path: 
     -------
     None
     """
+
+    # Validate df
+    if not isinstance(df, pd.DataFrame):
+        print("Error: df should be a pandas DataFrame.")
+        return
+    
+        # Validate groups
+    if not isinstance(groups, list):
+        print("Error: groups should be a list.")
+        return
+
+    if not all(isinstance(group, int) for group in groups):
+        print("Error: all elements in groups should be integers.")
+        return
+
+    # Validate sex
+    if sex is not None and not isinstance(sex, str):
+        print("Error: sex should be a string.")
+        return
+
+    # Validate save_path
+    if not isinstance(save_path, str):
+        print("Error: save_path should be a string.")
+        return
+
+    if not os.path.exists(save_path):
+        print("Error: The provided save_path does not exist.")
+        return
+
     # Filter the DataFrame to include only the chosen groups
     df = df[df['Group'].isin(groups)]
     
@@ -101,6 +130,40 @@ def plot_metric_per_session(df: pd.DataFrame, groups: list, metric: str, sex: st
     -------
     None
     """
+
+    # Validate df
+    if not isinstance(df, pd.DataFrame):
+        print("Error: df should be a pandas DataFrame.")
+        return
+
+    # Validate groups
+    if not isinstance(groups, list):
+        print("Error: groups should be a list.")
+        return
+
+    if not all(isinstance(group, int) for group in groups):
+        print("Error: all elements in groups should be integers.")
+        return
+
+    # Validate metric
+    if not isinstance(metric, str):
+        print("Error: metric should be a string.")
+        return
+
+    # Validate sex
+    if sex is not None and not isinstance(sex, str):
+        print("Error: sex should be a string.")
+        return
+
+    # Validate save_path
+    if not isinstance(save_path, str):
+        print("Error: save_path should be a string.")
+        return
+
+    if not os.path.exists(save_path):
+        print("Error: The provided save_path does not exist.")
+        return
+
     # Filter the DataFrame to include only the chosen groups
     df = df[df['Group'].isin(groups)]
     
@@ -156,6 +219,31 @@ def plot_group_presses(df: pd.DataFrame, groups: list = None, save_path: str = '
     -------
     None
     """
+
+    # Validate df
+    if not isinstance(df, pd.DataFrame):
+        print("Error: df should be a pandas DataFrame.")
+        return
+
+    # Validate groups
+    if groups is not None:
+        if not isinstance(groups, list):
+            print("Error: groups should be a list.")
+            return
+
+        if not all(isinstance(group, int) for group in groups):
+            print("Error: all elements in groups should be integers.")
+            return
+
+    # Validate save_path
+    if not isinstance(save_path, str):
+        print("Error: save_path should be a string.")
+        return
+
+    if not os.path.exists(save_path):
+        print("Error: The provided save_path does not exist.")
+        return
+
     # Reset the index to avoid ambiguity
     df = df.reset_index()
 

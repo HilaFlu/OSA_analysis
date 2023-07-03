@@ -33,6 +33,24 @@ def plot_and_save_total_alcohol_intake(animal: Animal, weight_dict: dict, path: 
     -------
     None
     """
+    # Validate animal
+    if not isinstance(animal, Animal):
+        print("Error: animal should be an instance of Animal class.")
+        return
+
+        # Validate weight_dict
+    if not isinstance(weight_dict, dict):
+        print("Error: weight_dict should be a dictionary.")
+        return
+
+    # Validate path
+    if not isinstance(path, str):
+        print("Error: path should be a string.")
+        return
+
+    if not os.path.exists(path):
+        print("Error: The provided path does not exist.")
+        return
 
     df=animal.animal_data
     # extract the most recent weight
@@ -81,6 +99,30 @@ def plot_and_save_alcohol_intake_per_session(animal: Animal, weight_dict: dict, 
     -------
     None
     """    
+    # Validate animal
+    if not isinstance(animal, Animal):
+        print("Error: animal should be an instance of Animal class.")
+        return
+
+        # Validate weight_dict
+    if not isinstance(weight_dict, dict):
+        print("Error: weight_dict should be a dictionary.")
+        return
+
+    # Validate session_number
+    if not isinstance(session_number, int) or session_number <= 0:
+        print("Error: session_number should be a positive integer.")
+        return
+
+    # Validate path
+    if not isinstance(path, str):
+        print("Error: path should be a string.")
+        return
+
+    if not os.path.exists(path):
+        print("Error: The provided path does not exist.")
+        return
+
     df=animal.animal_data
     # extract the most recent weight
     most_recent_date = max(weight_dict.keys())
@@ -137,6 +179,26 @@ def plot_and_save_total_of_general_index(animal: Animal, measurement: str, path:
     -------
     None
     """
+
+    # Validate animal
+    if not isinstance(animal, Animal):
+        print("Error: animal should be an instance of Animal class.")
+        return
+    
+    # Validate measurement
+    if not isinstance(measurement, str) or measurement == "":
+        print("Error: measurement should be a non-empty string.")
+        return
+
+    # Validate path
+    if not isinstance(path, str):
+        print("Error: path should be a string.")
+        return
+
+    if not os.path.exists(path):
+        print("Error: The provided path does not exist.")
+        return
+
     df=animal.animal_data
     # dict to convert measurement to its corresponding column name in df
     measurement_to_column = {"rewards": "rewards", "right_lever": "right_lever", "head": "head", "left_lever": "left_lever"}
@@ -189,6 +251,20 @@ def plot_and_save_avg_lever_presses(animal: Animal, path: str) -> None:
     -------
     None
     """
+    # Validate animal
+    if not isinstance(animal, Animal):
+        print("Error: animal should be an instance of Animal class.")
+        return
+
+    # Validate path
+    if not isinstance(path, str):
+        print("Error: path should be a string.")
+        return
+
+    if not os.path.exists(path):
+        print("Error: The provided path does not exist.")
+        return
+
     df=animal.animal_data
 
     avg_right_lever = df['right_lever'].mean()
@@ -218,6 +294,16 @@ def calculate_avg_alcohol_intake(df, animal_weight):
 
 
 def plot_avg_alcohol_intake_by_group(df, groups, save_path):
+
+    # Validate path
+    if not isinstance(save_path, str):
+        print("Error: path should be a string.")
+        return
+
+    if not os.path.exists(save_path):
+        print("Error: The provided path does not exist.")
+        return
+
     avg_intake = {}
     for group in groups:
         group_df = df.loc[df['Group'] == group]
