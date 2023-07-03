@@ -64,7 +64,7 @@ class Experiment:
         Raises
         ------
         ValueError:
-            If 'animal' is not an instance of the Animal class.
+            If 'animal' is not an instance of the Animal class, or if it id's already exists.
         """
         if not isinstance(animals, list):
             raise ValueError("'animals' must be an instance of list.")
@@ -75,6 +75,8 @@ class Experiment:
 
             group_key = animal.animal_data.loc[:, "Group"].iloc[0]
             if group_key in self.groups.keys():
+                if animal.animal_id in [previous_animal.animal_id for previous_animal in self.groups[group_key]]:
+                    raise ValueError("animal id already exists in this group")
                 self.groups[group_key].append(animal)
             else:
                 self.groups[group_key] = [animal]
