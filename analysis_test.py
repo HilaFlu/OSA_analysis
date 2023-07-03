@@ -9,6 +9,9 @@ import datetime
 from animal_analysis import plot_and_save_alcohol_intake_per_session, plot_and_save_total_alcohol_intake, plot_and_save_total_of_general_index, plot_and_save_avg_lever_presses, plot_avg_alcohol_intake_by_group
 from experiment_analysis import plot_group_presses, plot_avg_intake, plot_metric_per_session
 import pytest
+from PIL import Image
+import imagehash
+from pathlib import Path
 
 
 class TestAnalysis:
@@ -188,7 +191,14 @@ class TestAnalysis:
     def test_plot_group_presses_path_exists(self):
          with pytest.raises(ValueError):
             plot_group_presses(self.example5, groups=[1, 2], save_path="77")
-          
+
+    def test_compare_graph_image(self):
+          plot_group_presses(self.example5, groups=[1, 2], save_path= str(Path.cwd()) + "/test_data")
+
+          orig_img = imagehash.average_hash(Image.open(str(Path.cwd()) + "/test_data/plot_group_presses.png")) 
+          dup_img  = imagehash.average_hash(Image.open("./test_data/average_lever_presses_by_group.png"))
+
+          assert orig_img - dup_img == 0   
 
 
 if __name__ == '__main__':
@@ -201,7 +211,7 @@ if __name__ == '__main__':
                 "plot_and_save_avg_lever_presses_is_exp", "plot_and_save_avg_lever_presses_path_string", "lot_and_save_avg_lever_presses_path_exists",
                  "plot_avg_intake_is_group", "plot_avg_intake_sex_string", "plot_avg_intake_proper_sex", "plot_avg_intake_path_string", "plot_avg_intake_path_exists",
                 "plot_metric_per_session_is_list", "plot_metric_per_session_is_matric", "plot_metric_per_session_path_string", "plot_metric_per_session_path_exists"
-                ,"plot_group_presses_group_list", "plot_group_presses_path_string", "plot_group_presses_path_exists"
+                ,"plot_group_presses_group_list", "plot_group_presses_path_string", "plot_group_presses_path_exists","plot_group_presses_path_exists"
                ]
     
     errors = []
