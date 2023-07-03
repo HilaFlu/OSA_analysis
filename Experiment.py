@@ -43,8 +43,8 @@ class Experiment:
         if not isinstance(name, str):
             raise ValueError("'name' must be a string.")
 
-        if not isinstance(experimenters, list):
-            raise ValueError("'experimenters' must be a list.")
+        if not isinstance(experimenters, list) or experimenters == []:
+            raise ValueError("'experimenters' must be a list with the experimenter's names.")
 
         self.name = name
         self.groups = groups
@@ -95,14 +95,14 @@ class Experiment:
         Raises
         ------
         ValueError:
-            If 'file_path' is not a string or 'session_number' is not an integer.
+            If 'file_path' is not a string or 'session_number' is not a positive integer.
         FileNotFoundError:
             If the file specified by 'file_path' does not exist.
         ValueError:
             If the experimental group specified in the session does not exist.
         """
-        if not isinstance(file_path, str) or not isinstance(session_number, int):
-            raise ValueError("'file_path' should be a string and 'session_number' should be an integer.")
+        if not isinstance(file_path, str) or not isinstance(session_number, int) or session_number < 0:
+            raise ValueError("'file_path' should be a string and 'session_number' should be a positive integer.")
 
         # Check if the file path exists
         if not Path(file_path).is_file():

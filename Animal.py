@@ -37,13 +37,13 @@ class Animal:
         Raises
         ------
         ValueError:
-            If any of the parameters are not the correct type or do not exist.
+            If any of the parameters are not the correct type or do not exist or don't match their description.
         """
-        if animal_id is not None and not isinstance(animal_id, int):
-            raise ValueError("'animal_id' must be an integer.")
+        if animal_id is not None and not isinstance(animal_id, int) or animal_id < 0:
+            raise ValueError("'animal_id' must be a positive integer.")
 
-        if sex is not None and not isinstance(sex, str):
-            raise ValueError("'sex' must be a string.")
+        if sex is not None and not isinstance(sex, str) or sex not in ["Male", "Female"]:
+            raise ValueError("'sex' must be a string of either male or female.")
 
         if weight is not None and not isinstance(weight, dict):
             raise ValueError("'weight' must be a dictionary.")
@@ -53,6 +53,16 @@ class Animal:
 
         if animal_data is not None and not isinstance(animal_data, pd.DataFrame):
             raise ValueError("'animal_data' must be a DataFrame.")
+
+        for date_weight in weight.keys():
+            if not isinstance(date_weight, datetime.date):
+                raise ValueError("Date should be datetime")
+            if date_weight > datetime.datetime.now().date():
+                raise ValueError("Date is in the future, should be in the past or present")
+
+        for value_weight in weight.values():
+            if value_weight < 0 or not isinstance(value_weight, float):
+                raise ValueError("Weight must by float and has to be positive")
 
         self.animal_id = animal_id
         self.sex = sex
@@ -77,11 +87,11 @@ class Animal:
         Raises
         ------
         ValueError:
-            If 'file_path' is not a string or 'session_number' is not an integer.
+            If 'file_path' is not a string or 'session_number' is not a positive integer.
         FileNotFoundError:
             If the file specified by 'file_path' does not exist.
         """
-        if not isinstance(file_path, str) or not isinstance(session_number, int):
+        if not isinstance(file_path, str) or not isinstance(session_number, int) or session_number <= 0:
             raise ValueError("'file_path' should be a string and 'session_number' should be an integer.")
 
         # Check if the file path exists
@@ -122,12 +132,12 @@ class Animal:
         Raises
         ------
         ValueError:
-            If 'weight_date' is not a date object or 'weight_value' is not a float.
+            If 'weight_date' is not a date object from the past/present or 'weight_value' is not a positive float.
         """
-        if not isinstance(weight_date, datetime.datetime.date):
+        if not isinstance(weight_date, datetime.date):
             raise ValueError("'weight_date' must be a date object.")
 
-        if not isinstance(weight_value, float):
+        if not isinstance(weight_value, type(float)):
             raise ValueError("'weight_value' must be a float.")
 
         if self.weight is None:
