@@ -112,7 +112,7 @@ class AnalysisGUI:
         self.animal_button2.grid(row=4, column=1, pady=5)
          
          
-          # Animal Analysis 2 labels
+          #Animal Analysis 2 labels
         self.animal_path_label2 = tk.Label(self.animal_frame, text = "Enter Path:" )##group for exp 2 
         self.animal_path_label2.grid(row=5, column=0, pady=5)
         self.animal_label2= tk.Label(self.animal_frame , text = "Choose Animal:")##path for exp3

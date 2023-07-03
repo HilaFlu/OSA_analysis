@@ -17,7 +17,7 @@ class AnimalGroupWindow:
     Year of weight (YYYY):int
     Month of weight (MM) : int
     Day of weight (DD) : int
-    Sex : communication box (Male /Female)
+    Sex : communication box (Male /Female).
     after entering all those the user adds the animal to the group via the "Add to group"
     button. where it is saved as an Animal instance a part of a list that 
     is a value for a key which is the name of the group.

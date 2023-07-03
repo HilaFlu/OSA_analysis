@@ -156,7 +156,7 @@ class ExperimentDetailsGUI:
     
     
     # def add_group(self):
-    #     group_name = self.group_name_entry.get()
+    #     group_name = self.group_name_entry.get(
     #     self.group_name_entry.delete(0, tk.END)
 
     #     group_label = tk.Label(self.animals_frame, text=f"Group Name: {group_name}")
