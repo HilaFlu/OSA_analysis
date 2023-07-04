@@ -115,7 +115,7 @@ class AnalysisGUI:
         # Animal Analysis 2 button
   
         
-        self.animal_button2 = tk.Button(self.animal_frame, text="Alcohol Intake /session" ,width = 22, command=self.avg_alcohol_intake_by_group_gui)
+        self.animal_button2 = tk.Button(self.animal_frame, text="Alcohol Intake /session" ,width = 22, command=self.total_of_general_index_gui)
         self.animal_button2.grid(row=4, column=1, pady=5)
          
          
@@ -168,7 +168,7 @@ class AnalysisGUI:
             
             
         # Animal Analysis4 button "Average lever presses""
-     
+        
         self.animal_button4 = tk.Button(self.animal_frame, text="Average lever presses" , width = 22, command=self.avg_lever_presses_gui)
         self.animal_button4.grid(row=10, column=1, pady=5)
 
@@ -199,17 +199,18 @@ class AnalysisGUI:
 
         self.root.mainloop()
 
+    # Here add animal botton so the object self has an animal field 
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+
     # Animal commands  
-    # def avg_lever_presses_gui(self, exp: Experiment):
-    #     # use the function plot_and_save_avg_lever_presses from animal analysis with the 
+    def avg_lever_presses_gui(self):
+        plot_and_save_avg_lever_presses(animal=self.animal_button4, path=self.animal_path_label4)
 
-
-    # def total_alcohol_intake_gui(self):
-    #     # use the function plot_and_save_alcohol_intake_per_session from animal analysis with the 
-
-    # def total_of_general_index_gui(self):
-    #     # use the function plot_and_save_total_of_general_index from animal analysis with the 
-
+    def total_alcohol_intake_gui(self):
+        plot_and_save_alcohol_intake_per_session(animal=self.animal_button1, path=self.animal_path_label1)
+    
+    def total_of_general_index_gui(self):
+        plot_and_save_total_of_general_index(animal=self.animal_button2, path=self.animal_path_label2)
 
     # Group commands  
     def plot_avg_intake_gui(self):

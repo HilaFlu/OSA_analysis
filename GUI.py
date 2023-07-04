@@ -82,6 +82,7 @@ class ExperimentDetailsGUI:
         self.save_button = tk.Button(self.root, text = "Save File Data" ,command = self.save_exp_data )
         self.save_button.grid(row=5, column=1, padx=10, pady=15, sticky=tk.E)
         
+
         # #Analysis Button
         
         # self.save_button = tk.Button(self.root, text = "Start Analysis" ,command = self.start_analysis )
