@@ -204,13 +204,31 @@ class AnalysisGUI:
 
     # Animal commands  
     def avg_lever_presses_gui(self):
-        plot_and_save_avg_lever_presses(animal=self.animal_button4, path=self.animal_path_label4)
+      """Activates function Imported from animal_analysis that plots the average 
+      lever presses per session
+      Experiment : experiment()
+      path : str
+      Animal : Animal()"""
+
+      plot_and_save_avg_lever_presses(animal=self.animal_button4, path=self.animal_path_label4)
 
     def total_alcohol_intake_gui(self):
+        """Activates function Imported from animal_analysis that plots the average 
+      alcohol intake per session for a chosen Animal
+      Experiment : experiment()
+      path : str
+      Animal : Animal()
+      Session : [] list of session numbers"""
+      
         plot_and_save_alcohol_intake_per_session(animal=self.animal_button1, path=self.animal_path_label1)
     
     def total_of_general_index_gui(self):
-        plot_and_save_total_of_general_index(animal=self.animal_button2, path=self.animal_path_label2)
+      """Activates function Imported from animal_analysis that plots the average 
+      alcohol intake per session for a chosen Animal
+      Experiment : experiment()
+      path : str
+      Animal : Animal()"""
+      plot_and_save_total_of_general_index(animal=self.animal_button2, path=self.animal_path_label2)
 
     # Group commands  
     def plot_avg_intake_gui(self):
@@ -219,15 +237,38 @@ class AnalysisGUI:
         plot_avg_intake(self.exp, groups=self.exp.groups, sex=selected_gender)
 
     def plot_metric_per_session_gui(self):
-        selected_gender = self.experiment_sex_combobox2
-        metric = self.experiment_metric_combobox2
-        plot_metric_per_session(self.exp, groups=self.exp.groups, metric=metric , sex=selected_gender)
+      """ Activates function Imported from Experiment_analysis that plots the 
+      the values of A metric {Head, right level , left lever , reward } over a session
+      Experiment : Expriment()(not an input form user)
+      groups: [int,int]
+      path : str
+      Sex: string
+      Metric : str {Head, right level , left lever , reward }"""
+      selected_gender = self.experiment_sex_combobox2
+      metric = self.experiment_metric_combobox2
+      plot_metric_per_session(self.exp, groups=self.exp.groups, metric=metric , sex=selected_gender)
 
     def plot_group_presses_gui(self):
-        plot_group_presses(self.exp, groups=self.exp.groups)
+      """ Activates function Imported from Experiment_analysis that plots the 
+     number of group presses of levers
+      Experiment : Expriment()(not an input form user)
+      groups: [int,int]
+      path : str -to save the plot in 
+      Sex: string
+     
+      """
+      plot_group_presses(self.exp, groups=self.exp.groups)
 
     def avg_alcohol_intake_by_group_gui(self):
-        plot_avg_alcohol_intake_by_group(self.exp, groups=self.exp.groups)
+      """ Activates function Imported from Experiment_analysis that plots the 
+      avergae alcohol intake by group.
+      
+      Experiment : Expriment()(not an input form user)
+      groups: [int,int]
+      path : str
+      Sex : str {Male/Female}
+      """
+      plot_avg_alcohol_intake_by_group(self.exp, groups=self.exp.groups)
 
 
 

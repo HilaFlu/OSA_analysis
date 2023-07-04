@@ -75,18 +75,18 @@ class ExperimentDetailsGUI:
 
         ##Load button for file path and entry 
         self.load_file_button = tk.Button(self.root, text="Load File", command=self.load_file)
-        self.load_file_button.grid(row=4, column=2, padx=10, pady=15, sticky=tk.N)
+        self.load_file_button.grid(row=4, column=2, padx=10, pady=15, sticky=tk.E)
 
         
-        ##Save button
-        self.save_button = tk.Button(self.root, text = "Save File Data" ,command = self.save_exp_data )
+     # #Analysis Button
+        
+        self.Analysis_button = tk.Button(self.root, text = "Start Analysis" ,command = self.Start_analysis )
+        self.Analysis_button.grid(row=6, column=1, padx=10, pady=15, sticky=tk.E)
+           ##Save button
+
+        
+        self.save_button = tk.Button(self.root, text = "Save Data" ,command = self.save_exp_data )
         self.save_button.grid(row=5, column=1, padx=10, pady=15, sticky=tk.E)
-        
-
-        # #Analysis Button
-        
-        # self.save_button = tk.Button(self.root, text = "Start Analysis" ,command = self.start_analysis )
-        # self.save_button.grid(row=6, column=1, padx=10, pady=15, sticky=tk.E)
         
         # # Animal Groups
         # self.Creat_group_label = tk.Label(self.root, text="Groups")
@@ -158,9 +158,14 @@ class ExperimentDetailsGUI:
         self.exp.name = self.exp_name
         """ this saves the name of the of the Experiment and the olist of researchers"""
         Creat_groups_gui = AnimalGroupWindow()
-        Creat_analysis_gui = AnalysisGUI(self.exp)  
+        # Creat_analysis_gui = AnalysisGUI(self.exp)  
     
-    
+    def Start_analysis(self):
+        """Opens the analysis GUI for graph genration"""
+        Creat_analysis_gui = AnalysisGUI(self.exp)
+        
+        
+        ####################
     # def add_group(self):
     #     group_name = self.group_name_entry.get(
     #     self.group_name_entry.delete(0, tk.END)
