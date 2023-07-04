@@ -206,7 +206,7 @@ class ExperimentDetailsGUI:
     #         "textbox": None  # Placeholder for the group's textbox
     #     }
 
-    #     def add_animal():
+    #     def add_animal( ):
     #         animal = {
     #             "id": animal_id_entry.get(),
     #             "box": animal_box_entry.get(),

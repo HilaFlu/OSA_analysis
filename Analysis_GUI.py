@@ -226,7 +226,7 @@ class AnalysisGUI:
       """Activates function Imported from animal_analysis that plots the average 
       alcohol intake per session for a chosen Animal
       Experiment : experiment()
-      path : str
+      path : str.
       Animal : Animal()"""
       plot_and_save_total_of_general_index(animal=self.animal_button2, path=self.animal_path_label2)
 
