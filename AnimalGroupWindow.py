@@ -6,6 +6,22 @@ import pandas as pd
 
 
 class AnimalGroupWindow:
+    """This GUI is designed to handle attribute input from the user.
+    asking for :
+    Group name: - float 
+    Once entered , using the "Create new group" Button, the user is given the 
+    ability to grant the Animal attributes such as:
+    Animal ID :int
+    Animal box : int
+    Animal weight : int 
+    Year of weight (YYYY):int
+    Month of weight (MM) : int
+    Day of weight (DD) : int
+    Sex : communication box (Male /Female).
+    after entering all those the user adds the animal to the group via the "Add to group"
+    button. where it is saved as an Animal instance a part of a list that 
+    is a value for a key which is the name of the group.
+    """
     def __init__(self):
         self.groups = {}
 
@@ -31,6 +47,10 @@ class AnimalGroupWindow:
         self.animal_group_window.mainloop()
 
     def add_group(self):
+        """command for add group
+        this command will create an instance of Animal() with the input of the user
+        append it to a list. afterwards the field are emptied allowing the user to 
+        input a new instance."""
         group_name = float(self.group_name_entry.get())
         self.group_name_entry.delete(0, tk.END)
 

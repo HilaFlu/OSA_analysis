@@ -10,11 +10,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from Analysis_GUI import AnalysisGUI
-<<<<<<< HEAD
 from Experiment import *
-=======
-
->>>>>>> fd27a5500d5c2e47165fd8b5265e94b0402b9273
 
 class ExperimentDetailsGUI:
     """This is a starting GUI class.

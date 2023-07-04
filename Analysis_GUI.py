@@ -1,10 +1,17 @@
 import tkinter as tk
 from tkinter import ttk
+from Experiment import *
+from tkinter import messagebox
+from animal_analysis import *
+from experiment_analysis import *
+
+
 class AnalysisGUI:
-    def __init__(self):
+    def __init__(self, exp:Experiment):
         self.root = tk.Tk()
         self.root.title("Analysis GUI")
         self.root.geometry("940x550")
+        self.exp = exp
 
         # Left Side (Experiment Analysis)
         self.experiment_frame = tk.Frame(self.root, padx=10, pady=10)
@@ -112,7 +119,7 @@ class AnalysisGUI:
         self.animal_button2.grid(row=4, column=1, pady=5)
          
          
-          # Animal Analysis 2 labels
+          #Animal Analysis 2 labels
         self.animal_path_label2 = tk.Label(self.animal_frame, text = "Enter Path:" )##group for exp 2 
         self.animal_path_label2.grid(row=5, column=0, pady=5)
         self.animal_label2= tk.Label(self.animal_frame , text = "Choose Animal:")##path for exp3
@@ -162,7 +169,7 @@ class AnalysisGUI:
             
         # Animal Analysis4 button "Average lever presses""
      
-        self.animal_button4 = tk.Button(self.animal_frame, text="Average lever presses" , width = 22)
+        self.animal_button4 = tk.Button(self.animal_frame, text="Average lever presses" , width = 22, command=self.avg_lever_presses_gui)
         self.animal_button4.grid(row=10, column=1, pady=5)
 
         
@@ -191,6 +198,36 @@ class AnalysisGUI:
   
 
         self.root.mainloop()
+
+    # Animal commands  
+    def avg_lever_presses_gui(self, exp: Experiment):
+        # use the function plot_and_save_avg_lever_presses from animal analysis with the 
+
+
+    def total_alcohol_intake_gui(self):
+        # use the function plot_and_save_alcohol_intake_per_session from animal analysis with the 
+
+    def total_of_general_index_gui(self):
+        # use the function plot_and_save_total_of_general_index from animal analysis with the 
+
+
+    # Group commands  
+    def plot_avg_intake_gui(self):
+        selected_gender = self.experiment_sex_combobox1
+        # Call the plot_avg_intake function with the selected gender
+        plot_avg_intake(self.exp, groups=self.exp.groups, sex=selected_gender)
+
+    def plot_metric_per_session_gui(self):
+        selected_gender = self.experiment_sex_combobox2
+        metric = self.experiment_metric_combobox2
+        plot_metric_per_session(self.exp, groups=self.exp.groups, metric=metric , sex=selected_gender)
+
+    def plot_group_presses_gui(self):
+        plot_group_presses(self.exp, groups=self.exp.groups)
+
+    def avg_alcohol_intake_by_group_gui(self):
+        plot_avg_alcohol_intake_by_group(self.exp, groups=self.exp.groups)
+
 
 
 if __name__ == '__main__':
