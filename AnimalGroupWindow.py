@@ -179,6 +179,7 @@ class AnimalGroupWindow:
         print(self.groups)
 
 
+
 if __name__ == '__main__':
     animal_group_window = AnimalGroupWindow()
     # print(animal_group_window.groups[1] )

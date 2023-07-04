@@ -95,7 +95,7 @@ class AnalysisGUI:
         
         ### Button for analysis #1 - Total alcohol Intake:
         
-        self.animal_button1 = tk.Button(self.animal_frame, text="Total Alcohol Intake" , width = 22)
+        self.animal_button1 = tk.Button(self.animal_frame, text="Total Alcohol Intake" , width = 22, command=self.total_alcohol_intake_gui)
         self.animal_button1.grid(row=1, column=1, pady=5)
 
         ## Aniaml Analysis 1 labels
@@ -115,7 +115,7 @@ class AnalysisGUI:
         # Animal Analysis 2 button
   
         
-        self.animal_button2 = tk.Button(self.animal_frame, text="Alcohol Intake /session" ,width = 22)
+        self.animal_button2 = tk.Button(self.animal_frame, text="Alcohol Intake /session" ,width = 22, command=self.avg_alcohol_intake_by_group_gui)
         self.animal_button2.grid(row=4, column=1, pady=5)
          
          
@@ -141,7 +141,7 @@ class AnalysisGUI:
         # Animal Analysis3 button
         
         
-        self.animal_button3 = tk.Button(self.animal_frame, text="Metrics")
+        self.animal_button3 = tk.Button(self.animal_frame, text="Metrics", command=self.plot_metric_per_session_gui)
         self.animal_button3.grid(row=7, column=1, pady=5)
 
         
@@ -158,7 +158,7 @@ class AnalysisGUI:
         # Animal Analysis 3 entries
         self.animal_path_entry3 = tk.Entry(self.animal_frame)
         self.animal_path_entry3.grid(row=9, column=0, pady=5)
-        self.animal_metric_combobox = ttk.Combobox(self.animal_frame, values=[ "reward","head", "left_lever", "right_lever"] )
+        self.animal_metric_combobox = ttk.Combobox(self.animal_frame, values=[ "reward","head", "left_lever", "right_lever"])
         self.animal_metric_combobox.grid(row=9, column=1,padx=5, pady=5)
         self.animal_entry3 = tk.Entry(self.animal_frame)## Animal entry box
         self.animal_entry3.grid(row=9, column=2, pady=5)
@@ -200,15 +200,15 @@ class AnalysisGUI:
         self.root.mainloop()
 
     # Animal commands  
-    def avg_lever_presses_gui(self, exp: Experiment):
-        # use the function plot_and_save_avg_lever_presses from animal analysis with the 
+    # def avg_lever_presses_gui(self, exp: Experiment):
+    #     # use the function plot_and_save_avg_lever_presses from animal analysis with the 
 
 
-    def total_alcohol_intake_gui(self):
-        # use the function plot_and_save_alcohol_intake_per_session from animal analysis with the 
+    # def total_alcohol_intake_gui(self):
+    #     # use the function plot_and_save_alcohol_intake_per_session from animal analysis with the 
 
-    def total_of_general_index_gui(self):
-        # use the function plot_and_save_total_of_general_index from animal analysis with the 
+    # def total_of_general_index_gui(self):
+    #     # use the function plot_and_save_total_of_general_index from animal analysis with the 
 
 
     # Group commands  
@@ -230,5 +230,7 @@ class AnalysisGUI:
 
 
 
-if __name__ == '__main__':
-    analysis_gui = AnalysisGUI()
+# if __name__ == '__main__':
+#     gui = ExperimentDetailsGUI()
+#     exp = gui.exp
+#     analysis_gui = AnalysisGUI(exp)

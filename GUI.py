@@ -156,7 +156,8 @@ class ExperimentDetailsGUI:
         print("the dict for the files is " , self.files  )
         self.exp.name = self.exp_name
         """ this saves the name of the of the Experiment and the olist of researchers"""
-        Creat_groups_gui = AnimalGroupWindow()  
+        Creat_groups_gui = AnimalGroupWindow()
+        Creat_analysis_gui = AnalysisGUI(self.exp)  
     
     
     # def add_group(self):
